@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Input Form</title>
+  </head>
+  <body>
+    <form id="stringForm">
+      <label for="input1">Input 1:</label>
+      <input type="text" id="input1" name="input1" required />
+      <br />
+      <label for="input2">Input 2:</label>
+      <input type="text" id="input2" name="input2" required />
+      <br />
+      <button type="button" onclick="sendData()">Send</button>
+    </form>
+
+    <script>
+      function sendData() {
+        const input1 = document.getElementById("input1").value;
+        const input2 = document.getElementById("input2").value;
+
+        const data = {
+          str1: input1,
+          str2: input2,
+        };
+
+        fetch("https://two-string-back-8184fe547aa1.herokuapp.com/string", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
