@@ -3,47 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>String Input Form</title>
+    <title>Find Common Sequence From Two Given Strings</title>
+    <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
-    <form id="stringForm">
+    <form id="inputForm">
       <label for="input1">Input 1:</label>
-      <input type="text" id="input1" name="input1" required />
+      <textarea
+        id="input1"
+        name="input1"
+        rows="4"
+        cols="15"
+        required
+      ></textarea>
       <br />
+
       <label for="input2">Input 2:</label>
-      <input type="text" id="input2" name="input2" required />
+      <textarea
+        id="input2"
+        name="input2"
+        rows="4"
+        cols="15"
+        required
+      ></textarea>
       <br />
+
       <button type="button" onclick="sendData()">Send</button>
     </form>
 
-    <script>
-      function sendData() {
-        const input1 = document.getElementById("input1").value;
-        const input2 = document.getElementById("input2").value;
+    <div id="result1" class="result"></div>
+    <div id="result2" class="result"></div>
 
-        const data = {
-          str1: input1,
-          str2: input2,
-        };
-
-        fetch(
-          "https://two-string-back-8184fe547aa1.herokuapp.com/string/compare",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    </script>
+    <script src="./js/stringHandler.js"></script>
   </body>
 </html>
