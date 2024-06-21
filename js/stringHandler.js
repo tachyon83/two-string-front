@@ -1,3 +1,5 @@
+import { ServerAddress } from "../serverAddr";
+
 function sendData() {
   const input1 = document.getElementById("input1").value;
   const input2 = document.getElementById("input2").value;
@@ -7,17 +9,13 @@ function sendData() {
     str2: input2,
   };
 
-  fetch(
-    // "https://two-string-back-8184fe547aa1.herokuapp.com/string/compare",
-    "http://localhost:4000/string/compare",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  )
+  fetch(ServerAddress, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
     .then((response) => response.json())
     .then((data) => {
       processCommonParts(
