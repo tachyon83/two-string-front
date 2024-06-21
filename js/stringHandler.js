@@ -1,4 +1,5 @@
-import { ServerAddress } from "../serverAddr";
+const ServerAddress =
+  "https://two-string-back-8184fe547aa1.herokuapp.com/string/compare";
 
 function sendData() {
   const input1 = document.getElementById("input1").value;
